@@ -6,7 +6,7 @@
 /*   By: kalhanaw <kalhanaw@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 19:21:52 by kalhanaw          #+#    #+#             */
-/*   Updated: 2026/05/08 15:54:42 by kalhanaw         ###   ########.fr       */
+/*   Updated: 2026/05/08 17:52:17 by kalhanaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main()
 		a.push_back('m');
 		a.push_back('f');
 		try {std::cout << ::easyfind(a, 'o') << std::endl;}
-		catch (...) {std::cout<< "Well caught, no match!" << std::endl;}
+		catch (const std::exception &e) {std::cout<< e.what() << std::endl;}
 	}
 
 	return (0);
