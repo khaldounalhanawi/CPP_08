@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kalhanaw <kalhanaw@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/09 19:11:53 by kalhanaw          #+#    #+#             */
+/*   Updated: 2026/05/09 19:11:54 by kalhanaw         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Span.hpp"
 #include <iostream>
 #include <algorithm>
@@ -13,27 +25,47 @@ _counter(0)
 	return ;
 }
 
-// Span::Span(const Span& other)
-// {
-// }
+Span::Span(const Span& other) :
+_capacity(other.getCapacity()),
+_counter(other.getCounter())
+{
+	_data = other.getData();
+	return ;
+}
 
 Span::~Span()
 {
-
+	return ;
 }
 
 // ________________________ Operator overloads ________________________ //
 
-// Span& Span::operator=(const Span& source)
-// {
-// 	return *this;
-// }
+Span& Span::operator=(const Span& source)
+{
+	if (this == &source)
+		return (*this);
+	_data = source.getData ();
+	_capacity = source.getCapacity ();
+	_counter = source.getCounter ();
+
+	return (*this);
+}
 
 // ________________________ Setter & Getters ________________________ //
 
 unsigned int	Span::getCapacity() const
 {
 	return (this->_capacity);
+}
+
+unsigned int	Span::getCounter() const
+{
+	return (this->_counter);
+}
+
+const std::vector<int>	&Span::getData() const
+{
+	return (this->_data);
 }
 
 // ________________________ Member functions ________________________ //
@@ -97,15 +129,18 @@ int	Span::shortestSpan() const
 	return (span);
 }
 
-// ________________________ Exception functions ________________________ //
+void	Span::addNumber(int *start, int *end)
+{
+	if (!start || !end)
+		throw std::runtime_error ("Invalid pointer iterator!");
 
+	if (end - start > this->_capacity)
+		throw std::runtime_error ("Span object is too small for the provided range!");
 
-// ________________________ Helper functions ________________________ //
-
-
-
-/*
-	// normal case
-	if (rang1min != min && rang2min != min)*/
-
-	// 3 44 55 99 0 43 5
+	for (int *i = start; i != end; i ++)
+	{
+		if (!i)
+			throw std::runtime_error ("Invalid pointer iterator inside range");
+		this->addNumber (*i); 
+	}
+};
