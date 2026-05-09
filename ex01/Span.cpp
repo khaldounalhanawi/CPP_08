@@ -71,9 +71,7 @@ int	Span::longestSpan() const
 	return (max - min);
 }
 
-
-
-int	Span::shortestSpan() const // check if it is 1 item long
+int	Span::shortestSpan() const
 {
 	int	span = -1;
 	int diff;

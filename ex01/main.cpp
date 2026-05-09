@@ -71,5 +71,13 @@ int	main()
 		
 		a.printAll ();
 	}
+
+	{
+		Span	a(2);
+		int		array[] = {4,1,7,4};
+
+		a.addNumber(array, array + 2);
+		a.printAll ();
+	}
 	return (0);
 }

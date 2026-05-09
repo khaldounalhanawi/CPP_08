@@ -1,6 +1,7 @@
 NAME = Span
 CC = c++
-HEADER = Span.hpp
+HEADER =	Span.hpp \
+			addNumber.tpp
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 SRCS = Span.cpp \
 		main.cpp
@@ -19,7 +20,7 @@ $(NAME): $(OBJS)
 %.o: %.cpp $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@
 
-test11: $(TEST11_SRC) $(HEADER) 
+test11: $(TEST11_SRC) $(HEADER)
 	$(CC) $(TEST11_FLAGS) $(TEST11_SRC) Span.cpp -o $(TEST11_OUT)
 
 clean:
