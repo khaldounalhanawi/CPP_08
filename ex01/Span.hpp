@@ -1,12 +1,14 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+# include <vector>
+
 class Span
 {
 	private:
-		int				*_array;
-		unsigned int	_size;
-		unsigned int	_pos;
+		std::vector<int>	_data;
+		unsigned int		_capacity;
+		unsigned int		_counter;
 
 	public:
 		Span (const unsigned int N);
@@ -17,13 +19,13 @@ class Span
 		Span &operator=(Span const &source); //TODO
 
 		// Setters & Getters
-		unsigned int	getSize() const;
+		unsigned int	getCapacity() const;
 
 		// Member functions
 		void	addNumber(const int input);
 		void	printAll() const;
 		int		shortestSpan() const;
-		int		LongestSpan() const;
+		int		longestSpan() const;
 
 };
 
