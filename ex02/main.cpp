@@ -1,54 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kalhanaw <kalhanaw@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/12 10:40:47 by kalhanaw          #+#    #+#             */
+/*   Updated: 2026/05/12 10:43:39 by kalhanaw         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "MutantStack.hpp"
 #include <iostream>
-
-// int main()
-// {
-// 	MutantStack<char>	a;
-
-// 	a.push ('f');
-// 	a.push ('k');
-// 	a.push ('e');
-// 	a.push ('d');
-
-// 	// std::cout << a.top();
-// 	std::cout << *a.begin();
-// 	std::cout << *a.end();
-// 	// std::cout << *a.next();
-
-// 	return (0);
-// }
+#include <deque>
+#include <list>
 
 int main()
 {
-	MutantStack<int> mstack;
-	mstack.push(5);
-	mstack.push(17);
-
-	std::cout << mstack.top() << std::endl;
-	mstack.pop();
-	std::cout << mstack.size() << std::endl;
-
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
-
-	mstack.push(0);
-
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
-
-	++it;
-	--it;
-
-	while (it != ite)
 	{
-		std::cout << *it << std::endl;
-		++it;
+		MutantStack<char>	a;
+
+		a.push ('f');
+		a.push ('k');
+		a.push ('e');
+		a.push ('d');
+	
+		std::cout << *a.begin() << "\n";
+		std::cout << *(a.end() - 1);
 	}
 
-	std::stack<int> s(mstack);
+	std::cout <<"\n********************************\n";
+
+	{
+		MutantStack<char, std::list<char> >	a;
+
+		a.push ('f');
+		a.push ('k');
+		a.push ('e');
+		a.push ('d');
+	
+		typedef MutantStack<char, std::list<char> >::container_type::iterator myIter;
+
+		for (myIter i = a.begin(); i != a.end(); i ++)
+			std::cout << *i << "\n";
+	}
+
 	return (0);
 }
+
+// int main()
+// {
+// 	MutantStack<int> mstack;
+// 	mstack.push(5);
+// 	mstack.push(17);
+
+// 	std::cout << mstack.top() << std::endl;
+// 	mstack.pop();
+// 	std::cout << mstack.size() << std::endl;
+
+// 	mstack.push(3);
+// 	mstack.push(5);
+// 	mstack.push(737);
+
+// 	mstack.push(0);
+
+// 	MutantStack<int>::iterator it = mstack.begin();
+// 	MutantStack<int>::iterator ite = mstack.end();
+
+// 	++it;
+// 	--it;
+
+// 	while (it != ite)
+// 	{
+// 		std::cout << *it << std::endl;
+// 		++it;
+// 	}
+
+// 	std::stack<int> s(mstack);
+// 	return (0);
+// }
 
 
 // int main()
